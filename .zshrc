@@ -26,15 +26,15 @@ zplug "digitalocean/doctl", from:gh-r, use:"*1.5.0*linux*amd64*.tar.gz", as:comm
 zplug "djui/alias-tips"
 zplug "github/hub", from:gh-r, use:"*linux*amd*", as:command
 zplug "junegunn/fzf", at:0.15.9, use:"bin/fzf-tmux", as:command
-zplug "junegunn/fzf-bin", at:0.15.9, from:gh-r, use:"*linux*amd64*", rename-to:"fzf", as:command
-zplug "justone/dockviz", from:gh-r, use:"*linux*amd64*", as:command
+zplug "junegunn/fzf-bin", at:0.15.9, from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
+zplug "justone/dockviz", from:gh-r, use:"*darwin*", as:command
+zplug "justone/dockviz", from:gh-r, use:"*darwin*", as:command
 zplug "michaeldfallen/git-radar", use:git-radar, as:command
 zplug "paulirish/git-open", as:command
 zplug "scmbreeze/scm_breeze", hook-build:"$ZPLUG_HOME/repos/scmbreeze/scm_breeze/install.sh"
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "supercrabtree/k"
 zplug "tj/git-extras", use:"bin/*", as:command, hook-build:"make install PREFIX=$HOME/.git-extras"
-zplug "tstack/lnav", from:gh-r, use:"*linux*64*", as:command
 zplug "zsh-users/zsh-autosuggestions"
 zplug "b4b4r07/enhancd", use:init.sh, nice:17  # after prezto
 zplug "zsh-users/zsh-syntax-highlighting", nice:18  # >=10 means after compinit
@@ -107,11 +107,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Documents
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUALENVWRAPPER_PYTHON=$(which python2)
-export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source $VIRTUALENVWRAPPER_SCRIPT
 alias pipupdate='sudo pip install --upgrade $(pip list --outdated --format json | jq -r ".[].name")'
 alias pip2update='sudo pip2 install --upgrade $(pip2 list --outdated --format json | jq -r ".[].name")'
-
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
 # js
 alias npmupdate="npm list -g -depth 0 | grep -v /usr | sed '/^$/d' | cut -d' ' -f2 | cut -d'@' -f1 | sort | _ xargs -I {} npm install -g {}"
 
@@ -127,25 +128,23 @@ alias $GO_VERSION=$GOROOT/bin/go
 alias go=$GO_VERSION
 
 # command not found package suggestion
-source /usr/share/doc/pkgfile/command-not-found.zsh
+#source /usr/share/doc/pkgfile/command-not-found.zsh
+source /Users/aviv/.git-extras/etc/bash_completion.d/git-extras
 
 # git-radar
 export GIT_RADAR_FORMAT="[%{$reset_color%}%{remote: }%{branch}%{ :local}%{$reset_color%}%{ :changes}%{ :stash}] "
 export GIT_RADAR_MASTER_SYMBOL="m"
-
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # scm_breeze
 [ -s "/Users/aviv/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv/.scm_breeze/scm_breeze.sh"
 
 
 # ssh
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-eval $(keychain --eval --quiet github ansible ansible-old)
 
 # git-extras
 export PATH=$HOME/.git-extras:$PATH
 
-# source secret env keys, etc.
-source $HOME/.zsh-secrets
 
 # aliases
 
@@ -159,11 +158,8 @@ alias la="l -A"  # override scm_breeze
 alias ag="ag --smart-case --follow --group"
 alias agl="ag --pager less"
 
-alias js="node"
 alias tree="tree -C"
 alias vi="vim"
-alias xclip="xclip -selection clipboard"
-alias ssh="cat ~/.ssh/config.d/* > ~/.ssh/config && ssh"  # allow for multiple ssh config files
 
 # tcpdump all requests made by given process
 alias sysdig="sudo sysdig"
@@ -199,5 +195,3 @@ alias drmid="docker images -qf dangling=true | tr '\n' ' ' | xargs docker rmi -f
     docker images | grep \"^<none>\" | awk \"{print $3}\" | tr '\n' ' ' | tr '\n' ' ' | xargs docker rmi -f"
 alias dc="docker-compose"
 
-alias vg=vagrant
-alias graph="graph-easy --from dot --as boxart --stats"
