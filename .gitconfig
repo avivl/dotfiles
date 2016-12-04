@@ -1,60 +1,60 @@
 [user]
     name = Aviv Laufer
     email = aviv@rounds.com
-#[commit]
-#    gpgSign = true
-[push]
-    default = simple
-[credential]
-    helper = cache --timeout=3600
-[apply]
-    whitespace = fix
-[core]
-    editor = vim
-    whitespace = space-before-tab,trailing-space,blank-at-eol,cr-at-eol,blank-at-eof
-	excludesfile = ~/.gitignore
-    pager = "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
-[color]
-    ui = true
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-[diff]
-    tool = vimdiff
-    renames = true
-[merge]
-    log = true
-[rebase]
-    autosquash = true
-    autostash = true
-    missingCommitsCheck = warn
-[alias]
-    l = log --graph --abbrev-commit --pretty='format:%C(yellow)%h%Creset %C(magenta)%G?%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset%C(yellow)%d%Creset'
-    ll = log --graph
+    [commit]
+#        gpgSign = true
+    [push]
+        default = simple
+    [credential]
+        helper = cache --timeout=3600
+    [apply]
+        whitespace = fix
+    [core]
+        editor = vim
+        whitespace = space-before-tab,trailing-space,blank-at-eol,cr-at-eol,blank-at-eof
+    	excludesfile = ~/.gitignore
+        pager = "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
+    [color]
+        ui = true
+    [color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+    [color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+    [color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+    [diff]
+        tool = vimdiff
+        renames = true
+    [merge]
+        log = true
+    [rebase]
+        autosquash = true
+        autostash = true
+        missingCommitsCheck = warn
+    [alias]
+        l = log --graph --abbrev-commit --pretty='format:%C(yellow)%h%Creset %C(magenta)%G?%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset%C(yellow)%d%Creset'
+        ll = log --graph
 
-    c = commit -vv
+        c = commit -vv
 
-    d  = !"git diff-index --quiet HEAD -- || clear; git diff --irreversible-delete --patch-with-stat"
-    ds = !"git diff-index --quiet HEAD -- || clear; git diff --irreversible-delete --patch-with-stat --staged"
+        d  = !"git diff-index --quiet HEAD -- || clear; git diff --irreversible-delete --patch-with-stat"
+        ds = !"git diff-index --quiet HEAD -- || clear; git diff --irreversible-delete --patch-with-stat --staged"
 
-    sh = show --irreversible-delete --patch-with-stat
+        sh = show --irreversible-delete --patch-with-stat
 
-    rp = rev-parse --short
+        rp = rev-parse --short
 
-    br = branch --remote
-    bdr = !"git-delete-branch $@"
-    bdm = !"git-delete-merged-branches"
-    prune = remote update origin --prune
+        br = branch --remote
+        bdr = !"git-delete-branch $@"
+        bdm = !"git-delete-merged-branches"
+        prune = remote update origin --prune
 
-    tags = tag --list
-    undopush = push --force origin HEAD^:master
+        tags = tag --list
+        undopush = push --force origin HEAD^:master

@@ -1,0 +1,111 @@
+
+
+function git-new-remote-tracking {
+  git checkout -b $1 && git push -u origin $1
+}
+
+function git_branch_name {
+  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+  echo "$val"
+}
+
+function git-done {
+  branch=`git_branch_name`
+  git checkout master && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
+}
+
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
+function git-on-master {
+  branch=`git_branch_name`
+  git checkout master && git pull --rebase 
+  git checkout $branch
+  git rebase master
+  }
+
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+compdef g=git
+
+function rrg {
+  rake routes | grep $1
+}
+
+function take {
+  mkdir $1
+  cd $1
+}
+
+# Allows commit message without typing quotes (can't have quotes in the commit msg though).
+function gc {
+  git commit -m "$*"
+}
+
+#!/bin/sh
+
+function involu
+{
+  BASE="$HOME//Projects/involu"
+  cd $BASE
+
+ tmux start-server
+ tmux new-session -d -s involu -n vim
+ tmux new-window -t involu:2 -n tests
+ tmux new-window -t involu:3 -n servers
+ tmux new-window -t involu:4 -n logs
+ tmux new-window -t involu:5 -n shell 
+
+ tmux send-keys -t involu:1 "cd $BASE; vim" C-m
+ tmux send-keys -t involu:2 "cd $BASE; guard -c" C-m
+ tmux send-keys -t involu:3 "cd $BASE; foreman start" C-m
+ tmux send-keys -t involu:4 "cd $BASE; tail -f log/*.log" C-m
+ tmux send-keys -t involu:5 "cd $BASE; " C-m
+ tmux select-window -t involu:1
+ tmux attach-session -t involu
+}
+
+function mountAndroid { hdiutil attach ~/android.dmg -readwrite -mountpoint /Volumes/android; }
+
+
+# ssh wrapper that rename current tmux window to the hostname of the
+# remote host.
+ssh() {
+    # Do nothing if we are not inside tmux or ssh is called without arguments
+    if [[ $# == 0 || -z $TMUX ]]; then
+        command ssh $@
+        return
+    fi
+    # The hostname is the last parameter (i.e. ${(P)#})
+    local remote=${${(P)#}%.*}
+    local old_name="$(tmux display-message -p '#W')"
+    local renamed=0
+    # Save the current name
+    if [[ $remote != -* ]]; then
+        renamed=1
+        tmux rename-window $remote
+    fi
+    command ssh $@
+    if [[ $renamed == 1 ]]; then
+        tmux rename-window "$old_name"
+    fi
+}
+
+function sshans { ssh -i ~/.ssh/ansible $@ }
+
+function rounds-apps { sshuttle -r ubuntu@ssh-gw.rounds.com 172.16.0.0/16 --dns }
+
+function tmux-cssh-ans {
+ OLD_TMUX=$TMUX
+ unset TMUX
+ tmux-cssh -c ~/.ssh/ansible $@
+ TMUX=$OLD_TMUX
+}
+
+
