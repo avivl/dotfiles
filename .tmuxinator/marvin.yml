@@ -1,0 +1,28 @@
+# ~/.tmuxinator/9to5.yml
+
+name: 9to5
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - marvin:
+        layout: ab16,202x52,0,0[202x41,0,0,0,202x10,0,42,3]
+        panes:
+          - cd /Users/aviv/GitHub/Misc/marvin/scripts;vim
+          - cd /Users/aviv/GitHub/Misc/marvin;bin/hubot --name marvin
+  - ubik:
+      layout: main-horzintal
+      panes:
+          - cd /Users/aviv/GitHub/Rounds/ubik/docker/hubot-marvin; vim
+          - cd /Users/aviv/GitHub/Rounds/ubik/docker/hubot-marvin; git status

@@ -1,0 +1,25 @@
+
+name: Bismarck
+root: /Users/aviv/Github/Rounds/bismarck
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - Bismark:
+    #layout: ab16,202x52,0,0[202x41,0,0,0,202x10,0,42,3]
+        layout: 3688,238x63,0,0[238x49,0,0,0,238x13,0,50,1]
+        panes:
+          - vim
+          -
+  - Fez: cd /Users/aviv/Github/Rounds/Fez
+  - Shell::
