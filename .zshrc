@@ -2,7 +2,7 @@
 HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
-
+zstyle ":zplug:tag" depth 0
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
@@ -15,7 +15,6 @@ export NDK_ROOT=$ANDROID_HOME/android-ndk-r9
 source $ZPLUG_HOME/init.zsh
 
 zplug "zplug/zplug", at:2.3.0, nice:1  # don't forget to zplug update --self && zplug update
-
 zplug "sorin-ionescu/prezto", as:plugin, use:init.zsh, nice:2, hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
 zstyle ':prezto:*:*' case-sensitive 'no'
 zstyle ':prezto:*:*' color 'yes'

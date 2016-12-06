@@ -46,7 +46,7 @@ Plug 'fatih/vim-nginx', { 'for': 'nginx' }
 Plug 'dietsche/vim-lastplace'
 Plug 'mileszs/ack.vim'
 Plug 'pearofducks/ansible-vim'
-Plug 'kana/vim-fakeclip'
+"Plug 'kana/vim-fakeclip'
 Plug 'xolox/vim-notes'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'myusuf3/numbers.vim'
@@ -56,6 +56,7 @@ call plug#end()
 
 
 " --- General settings ---
+nnoremap gm m
 let mapleader = ','
 set backspace=indent,eol,start
 set ruler
@@ -68,7 +69,7 @@ set ignorecase  " Case insensitive search
 set smartcase   " Case sensitive when uc present
 set number
 highlight clear LineNr
-set clipboard=unnamed  
+set clipboard=unnamed
 set autoread  " reload files when changed on disk, i.e. via `git checkout`
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set encoding=utf-8
