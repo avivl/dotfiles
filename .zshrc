@@ -7,6 +7,7 @@ SAVEHIST=20000
 export ZPLUG_HOME=$HOME/.zplug
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:~/bin
 export TERM=screen-256color-bce
 export ANDROID_HOME=/Users/aviv/android-sdks
 export ANDROID_SDK_ROOT=/Users/aviv/android-sdks
@@ -49,7 +50,8 @@ zstyle ':prezto:load' pmodule \
     zplug "b4b4r07/enhancd", use:init.sh, nice:17  # after prezto
     zplug "zsh-users/zsh-syntax-highlighting", nice:18  # >=10 means after compinit
     zplug "zsh-users/zsh-history-substring-search", nice:19
-
+    zplug "plugins/git",  from:oh-my-zsh, as:plugin
+    zplug "plugins/brew", from:oh-my-zsh
     zplug load
     # options
     stty start undef  # disable C-s stopping receiving keyboard signals.
@@ -136,10 +138,10 @@ source $VIRTUALENVWRAPPER_SCRIPT
 export GOPATH=/Users/aviv/gopath/
 export GOROOT=/usr/local/go
 [[ -s "/Users/aviv/.gvm/scripts/gvm" ]] && source "/Users/aviv/.gvm/scripts/gvm"
-gvm use go1.7.1
+gvm use go1.6.3
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-config config --local status.showUntrackedFiles no
+alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+myconfig config --local status.showUntrackedFiles no
 # aliases
 alias cdg='cd ~/GitHub/'
 alias cdr='cd ~/GitHub/Rounds/'
@@ -169,8 +171,6 @@ alias gc="g c"
 alias ga="g add"
 alias gmv="g mv"
 alias grs="git reset"
-alias gl="g l"
-alias gll="g ll"
 alias gd="git d"
 alias gds="git ds"
 alias gdc="git dc"
