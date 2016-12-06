@@ -36,8 +36,8 @@ zstyle ':prezto:load' pmodule \
     zplug "digitalocean/doctl", from:gh-r, use:"*1.5.0*darwin*.tar.gz", as:command
     zplug "djui/alias-tips"
     zplug "github/hub", from:gh-r, use:"*darwin*", as:command
-    zplug "junegunn/fzf", at:0.15.9, use:"bin/fzf-tmux", as:command
-    zplug "junegunn/fzf-bin", at:0.15.9, from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
+    zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
+    zplug "junegunn/fzf-bin", from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
     zplug "justone/dockviz", from:gh-r, use:"*darwin*", as:command
     zplug "michaeldfallen/git-radar", use:git-radar, as:command
     zplug "paulirish/git-open", as:command
@@ -138,7 +138,7 @@ source $VIRTUALENVWRAPPER_SCRIPT
 export GOPATH=/Users/aviv/gopath/
 export GOROOT=/usr/local/go
 [[ -s "/Users/aviv/.gvm/scripts/gvm" ]] && source "/Users/aviv/.gvm/scripts/gvm"
-gvm use go1.6.3
+gvm use go1.6.3 >/dev/null
 
 alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 myconfig config --local status.showUntrackedFiles no
