@@ -7,7 +7,7 @@ zstyle ":zplug:tag" depth 0
 export ZPLUG_HOME=$HOME/.zplug
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/google-cloud-sdk/bin
 export TERM=screen-256color-bce
 export ANDROID_HOME=/Users/aviv/android-sdks
 export ANDROID_SDK_ROOT=/Users/aviv/android-sdks

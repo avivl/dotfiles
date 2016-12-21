@@ -52,6 +52,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'myusuf3/numbers.vim'
 Plug 'yaroot/vissort'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 
@@ -175,6 +176,8 @@ let g:syntastic_cpp_include_dirs = g:syntastic_c_include_dirs
 let g:syntastic_cpp_auto_refresh_includes = g:syntastic_c_auto_refresh_includes
 let g:syntastic_cpp_remove_include_errors = g:syntastic_c_remove_include_errors
 
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
 
 " ----- Tagbar -----
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
