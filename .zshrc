@@ -137,7 +137,7 @@ source $VIRTUALENVWRAPPER_SCRIPT
 export GOPATH=/Users/aviv/gopath/
 export GOROOT=/usr/local/go
 [[ -s "/Users/aviv/.gvm/scripts/gvm" ]] && source "/Users/aviv/.gvm/scripts/gvm"
-gvm use go1.6.3 >/dev/null
+gvm use go1.7.4 >/dev/null
 
 alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 myconfig config --local status.showUntrackedFiles no
