@@ -1,4 +1,4 @@
-# credits github.com/sorin-ionescu/prezto
+#credits github.com/sorin-ionescu/prezto
 HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
@@ -9,13 +9,13 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:~/bin:~/google-cloud-sdk/bin
 export TERM=screen-256color-bce
-export ANDROID_HOME=/Users/aviv/android-sdks
-export ANDROID_SDK_ROOT=/Users/aviv/android-sdks
+export ANDROID_HOME=$HOME/android-sdks
+export ANDROID_SDK_ROOT=$HOME/android-sdks
 export NDK_ROOT=$ANDROID_HOME/android-ndk-r9
 source $ZPLUG_HOME/init.zsh
 
-zplug "zplug/zplug", at:2.3.0, nice:1  # don't forget to zplug update --self && zplug update
-zplug "sorin-ionescu/prezto", as:plugin, use:init.zsh, nice:2, hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
+zplug "zplug/zplug", at:2.3.0, defer:1  # don't forget to zplug update --self && zplug update
+zplug "sorin-ionescu/prezto", as:plugin, use:init.zsh, defer:2, hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
 zstyle ':prezto:*:*' case-sensitive 'no'
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
 
     zplug "dennishafemann/tmux-cssh", use:"tmux-cssh", as:command
     zplug "digitalocean/doctl", from:gh-r, use:"*1.5.0*darwin*.tar.gz", as:command
-    zplug "djui/alias-tips"
     zplug "github/hub", from:gh-r, use:"*darwin*", as:command
     zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
     zplug "junegunn/fzf-bin", from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
@@ -46,9 +45,9 @@ zstyle ':prezto:load' pmodule \
     zplug "tj/git-extras", use:"bin/*", as:command, hook-build:"make install PREFIX=$HOME/.git-extras"
 
     zplug "zsh-users/zsh-autosuggestions"
-    zplug "b4b4r07/enhancd", use:init.sh, nice:17  # after prezto
-    zplug "zsh-users/zsh-syntax-highlighting", nice:18  # >=10 means after compinit
-    zplug "zsh-users/zsh-history-substring-search", nice:19
+    zplug "b4b4r07/enhancd", use:init.sh, defer:3  # after prezto
+    zplug "zsh-users/zsh-syntax-highlighting", defer:3  # >=10 means after compinit
+    zplug "zsh-users/zsh-history-substring-search", defer:3
     zplug "plugins/git",  from:oh-my-zsh, as:plugin
     zplug "plugins/brew", from:oh-my-zsh
     zplug load
@@ -115,10 +114,10 @@ zstyle ':prezto:load' pmodule \
    # git-extras
    export PATH=$HOME/.git-extras:$PATH
 
-[ -s "/Users/aviv/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv/.scm_breeze/scm_breeze.sh"
-source /Users/aviv/.git-extras/etc/bash_completion.d/git-extras
-[ -f /Users/aviv/.travis/travis.sh ] && source /Users/aviv/.travis/travis.sh
-source /usr/local/bin/aws_zsh_completer.sh
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+#3source /Users/aviv/.git-extras/etc/bash_completion.d/git-extras
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+#source /usr/local/bin/aws_zsh_completer.sh
 source ~/.zsh/functions
 
 
@@ -134,10 +133,10 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 source $VIRTUALENVWRAPPER_SCRIPT
 
 # golang
-export GOPATH=/Users/aviv/gopath/
+export GOPATH=$HOME/gopath/
 export GOROOT=/usr/local/go
-[[ -s "/Users/aviv/.gvm/scripts/gvm" ]] && source "/Users/aviv/.gvm/scripts/gvm"
-gvm use go1.7.4 >/dev/null
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+gvm use go1.8 >/dev/null
 
 alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 myconfig config --local status.showUntrackedFiles no
@@ -196,3 +195,5 @@ alias vg=vagrant
 alias graph="graph-easy --from dot --as boxart --stats"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
