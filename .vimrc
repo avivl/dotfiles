@@ -53,6 +53,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'yaroot/vissort'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/Conque-GDB'
 call plug#end()
 
 

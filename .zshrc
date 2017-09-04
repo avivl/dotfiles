@@ -194,6 +194,8 @@ alias dc="docker-compose"
 alias vg=vagrant
 alias graph="graph-easy --from dot --as boxart --stats"
 
+
+alias kzoom="sudo pkill VDCAssistant"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
