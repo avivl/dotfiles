@@ -32,7 +32,6 @@ zstyle ':prezto:load' pmodule \
     zplug "Tarrasch/zsh-bd", use:bd.zsh
 
     zplug "dennishafemann/tmux-cssh", use:"tmux-cssh", as:command
-    zplug "digitalocean/doctl", from:gh-r, use:"*1.5.0*darwin*.tar.gz", as:command
     zplug "github/hub", from:gh-r, use:"*darwin*", as:command
     zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
     zplug "junegunn/fzf-bin", from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
