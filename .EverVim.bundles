@@ -1,0 +1,5 @@
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'rizzatti/dash.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tianon/vim-docker', { 'for': 'dockerfile' }
+Plug 'pearofducks/ansible-vim'
