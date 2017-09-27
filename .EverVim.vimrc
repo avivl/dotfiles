@@ -184,7 +184,18 @@
     let g:go_highlight_space_tab_error = 1
     let g:go_highlight_structs = 1
     let g:go_highlight_trailing_whitespace_error = 0
-    nmap <leader>ack :Ack<space>
+    nmap <leader>ack :<space>
+    " EasyTags {{{
+    set cpoptions+=d
+    let g:easytags_file = '~/.vim/.vimtags'
+    let g:easytags_events = ['BufReadPost', 'BufWritePost']
+    let g:easytags_dynamic_files = 2
+    let g:easytags_async = 1
+    let g:easytags_resolve_links = 1
+    let g:easytags_suppress_report = 1
+    nmap <leader>ack <Plug>(FerretAckWord)
+    " " }}}"
+    " }}}
 
 " }
 

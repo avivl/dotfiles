@@ -1,6 +1,6 @@
 [user]
 	name = Aviv Laufer
-    email = aviv.laufer@gmail.com
+	email = aviv.laufer@gmail.com
 [commit]
 #        gpgSign = true
     [push]
