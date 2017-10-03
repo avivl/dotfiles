@@ -144,7 +144,6 @@
     "   let g:evervim_edit_config_mapping='<leader>ev'
     "   let g:evervim_apply_config_mapping='<leader>sv'
     autocmd FileType markdown set conceallevel=0
-    nnoremap <Space> za
     let g:syntastic_python_checkers = ['pylint', 'pycodestyle', 'pydocstyle','pep8', 'pep257']
     let g:syntastic_id_checkers = 0
     let g:syntastic_aggregate_errors = 1
@@ -194,6 +193,9 @@
     let g:easytags_resolve_links = 1
     let g:easytags_suppress_report = 1
     nmap <leader>ack <Plug>(FerretAckWord)
+    nmap <silent> ./ :nohlsearch<CR>
+    " Close vim if the only window left open is a NERDTree
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " " }}}"
     " }}}
 
