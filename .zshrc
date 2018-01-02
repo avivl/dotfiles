@@ -27,7 +27,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "Tarrasch/zsh-bd", use:bd.zsh
-zplug "chriskempson/base16-shell", use:"scripts/base16-eighties.sh"
+#zplug "chriskempson/base16-shell", use:"scripts/base16-eighties.sh"
 zplug "dennishafemann/tmux-cssh", use:"tmux-cssh", as:command
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
@@ -163,7 +163,6 @@ if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then source 
 [[ -s "$HOME/.gvm/scripts/gvm"  ]] && source "$HOME/.gvm/scripts/gvm"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export ISTIO=$GOPATH/src/istio.io
+eval "$(pipenv --completion)"
+[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh

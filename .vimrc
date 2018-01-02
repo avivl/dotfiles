@@ -83,6 +83,7 @@ Plug 'mattn/emmet-vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
+Plug 'ternjs/tern_for_vim'
 Plug 'briancollins/vim-jst'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mxw/vim-jsx'
@@ -106,7 +107,7 @@ Plug 'kannokanno/previm'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'sotte/presenting.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --tern-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -445,6 +446,7 @@ let g:NERDTreeShowIgnoredStatus = 1
 "}}}
 "{{{synntastic
     let g:syntastic_python_checkers = ['pylint', 'pycodestyle', 'pydocstyle','pep8', 'pep257']
+    let g:syntastic_javascript_checkers = ['jshint']
     let g:syntastic_id_checkers = 0
     let g:syntastic_aggregate_errors = 1
     let g:syntastic_always_populate_loc_list = 1
@@ -529,6 +531,12 @@ let python_highlight_space_errors = 0
 let python_highlight_all = 1
 let g:pymode_rope = 0
 
+""}}}
+""{{{ tern
+"enable keyboard shortcuts
+let g:tern_map_keys=1
+""show argument hints
+let g:tern_show_argument_hints='on_hold'"
 ""}}}
 ""{{{ycm
     let g:acp_enableAtStartup = 0
