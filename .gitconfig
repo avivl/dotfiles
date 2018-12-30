@@ -73,3 +73,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[github]
+	user = avivl
+[http]
+	followRedirects = 1
+	cookiefile = /Users/aviv.laufer/.gitcookies

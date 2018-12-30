@@ -87,6 +87,8 @@ autoload -Uz prompt_virtualenv
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 PROMPT="%{$fg_bold[magenta]%}\$(get_pwd)%{$reset_color%} \$(git-radar --zsh --fetch)\$(prompt_virtualenv)%{$fg_bold[magenta]%}λ%{$reset_color%} "
+source /usr/local/opt/kube-ps1/share/kube-ps1.sh
+PROMPT='$(kube_ps1)'$PROMPT
 
 # syntax highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root line)
@@ -154,15 +156,25 @@ alias c-="c -"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc'; fi
-
 [[ -s "$HOME/.gvm/scripts/gvm"  ]] && source "$HOME/.gvm/scripts/gvm"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export ISTIO=$GOPATH/src/istio.io
 eval "$(pipenv --completion)"
 [ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
+source <(kubectl completion zsh)
+# added by travis gem
+[ -f /Users/aviv.laufer/.travis/travis.sh ] && source /Users/aviv.laufer/.travis/travis.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc'; fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
