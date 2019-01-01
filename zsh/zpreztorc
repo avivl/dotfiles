@@ -1,0 +1,111 @@
+#
+# Sets Prezto options.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+#
+# General
+#
+
+# Set case-sensitivity for completion, history lookup, etc.
+# zstyle ':prezto:*:*' case-sensitive 'yes'
+
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
+
+
+
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'tmux' \
+  'git' \
+  'osx' \
+  'contrib-prompt' \
+  'prompt'
+
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
+# Completions
+#
+
+# Set the entries to ignore in static */etc/hosts* for host completion.
+# zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \
+#   '0.0.0.0' '127.0.0.1'
+
+#
+# Editor
+#
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+
+#
+# Prompt
+#
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+
+zstyle ':prezto:module:prompt' theme 'spaceship'
+
+
+#
+# Python
+#
+
+# Auto switch the Python virtualenv on directory change.
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+# Automatically initialize virtualenvwrapper if pre-requisites are met.
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+
+zstyle ':prezto:module:python' auto-switch 'yes'
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+
+# Set case-sensitivity for completion, history lookup, etc.
+zstyle ':prezto:*:*' case-sensitive 'yes'
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
+# Integrate with iTerm2.
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+# Auto set the tab and window titles.# Auto set the tab and window titles.
+zstyle ':prezto:module:terminal' auto-title 'yes'
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'vi'
+# Set the keyword used by `mand` to open man pages in Dash.app
+zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
+
+# Auto switch the Python virtualenv on directory change.
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+# Automatically initialize virtualenvwrapper if pre-requisites are met.
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+

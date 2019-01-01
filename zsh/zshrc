@@ -1,0 +1,195 @@
+# Source Plug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+#profiling
+#zmodload zsh/zprof
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# Prezto framework
+zplug "sorin-ionescu/prezto", \
+  use:"init.zsh", \
+  hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
+
+
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+#zplugs
+
+#git stuff
+zplug "scmbreeze/scm_breeze", hook-build:"$ZPLUG_HOME/repos/scmbreeze/scm_breeze/install.sh"
+zplug "caarlos0/zsh-git-sync" # prune origin or upstream; merge upstream into current branch; push merged branch to fork (origin); remove merged branches.
+zplug "caarlos0/git-add-remote" #add-upstream company 
+zplug "tj/git-extras", use:"bin/*", as:command, hook-build:"make install PREFIX=$HOME/.git-extras"
+zplug "michaeldfallen/git-radar", use:git-radar, as:command
+zplug "paulirish/git-open", as:plugin
+
+#fzf
+zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
+zplug "junegunn/fzf-bin", from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
+
+#zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:3  # >=10 means after compinit
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-autosuggestions"
+zplug "djui/alias-tips"
+
+#direcory 
+zplug "supercrabtree/k"
+zplug "b4b4r07/enhancd", use:init.sh, defer:3  # after prezto
+zplug "Tarrasch/zsh-bd", use:bd.zsh
+
+#colors
+#zplug "chriskempson/base16-shell", use:"scripts/base16-eighties.sh"
+
+#misc
+zplug "plugins/brew", from:oh-my-zsh
+
+#python
+zplug 'pyenv/pyenv', as:"command", use:"bin/*"   
+eval "$(pyenv init -)"
+eval "$(pipenv --completion)"
+
+#go
+zplug 'syndbg/goenv', as:command, use:'bin/goenv'
+zplug 'syndbg/goenv', as:command, use:'plugins/go-build/bin/*'
+eval "$(goenv init -)"
+
+#ruby
+zplug "rbenv/rbenv", as:command, use:"bin/rbenv"
+eval "$(rbenv init -)"
+
+
+zplug load
+
+# options
+stty start undef  # disable C-s stopping receiving keyboard signals.
+stty stop undef
+setopt no_complete_aliases
+unsetopt CORRECT  # no autocorrection suggestions
+setopt MENU_COMPLETE  # select first menu option automatically
+setopt NO_NOMATCH  # stop zsh from catching ^ chars.
+setopt PROMPT_SUBST  # prompt substitution
+
+#git radar
+export GIT_RADAR_FORMAT="[%{$reset_color%}%{remote: }%{branch}%{ :local}%{$reset_color%}%{ :changes}%{ :stash}] "
+export GIT_RADAR_MASTER_SYMBOL="m"
+
+# enhancd
+if zplug check b4b4r07/enhancd; then
+    export ENHANCD_FILTER=fzf-tmux
+    export ENHANCD_DISABLE_DOT=1
+    export ENHANCD_DISABLE_HYPHEN=1
+fi
+
+# syntax highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root line)
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+
+# history substring search
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+export TERM=screen-256color-bce
+# theme
+get_pwd() {
+    git_root=$PWD
+    while [[ $git_root != / && ! -e $git_root/.git ]]; do git_root=$git_root:h; done
+    if [[ $git_root = $HOME || $git_root = / ]]; then unset git_root; prompt_short_dir=%~;
+    else parent=${git_root%\/*}; prompt_short_dir=${PWD#$parent/}; fi
+    echo $prompt_short_dir
+}
+
+prompt_virtualenv() { [[ -n $VIRTUAL_ENV && -n $VIRTUAL_ENV_DISABLE_PROMPT ]] && echo "%{$fg_bold[white]%}($(basename $VIRTUAL_ENV)) "; }
+autoload -Uz get_pwd
+autoload -Uz prompt_virtualenv
+autoload -Uz colors && colors
+autoload -Uz promptinit && promptinit
+#PROMPT="%{$fg_bold[magenta]%}\$(get_pwd)%{$reset_color%} \$(git-radar --zsh --fetch)\$(prompt_virtualenv)%{$fg_bold[magenta]%}λ%{$reset_color%} "
+source /usr/local/opt/kube-ps1/share/kube-ps1.sh
+#PROMPT='$(kube_ps1)'$PROMPT
+
+# python
+export PATH=$HOME/.local/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VIRTUALENVWRAPPER_PYTHON=$(which python2)
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+source $VIRTUALENVWRAPPER_SCRIPT
+
+HISTSIZE=20000
+HISTFILE=~/.zsh_history
+SAVEHIST=20000
+[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
+source <(kubectl completion zsh)
+# added by travis gem
+[ -f /Users/aviv.laufer/.travis/travis.sh ] && source /Users/aviv.laufer/.travis/travis.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aviv.laufer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc'; fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"   
+[ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
+if [ 1 -eq 0 ]; then
+
+# zplug
+
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:~/bin:~/google-cloud-sdk/bin
+
+export ANDROID_HOME=$HOME/android-sdks
+export ANDROID_SDK_ROOT=$HOME/android-sdks
+export NDK_ROOT=$ANDROID_HOME/android-ndk-r9
+
+
+
+
+
+
+#git-radar
+
+export PATH=$HOME/.git-extras:$PATH
+
+
+# golang
+#export GOPATH=$HOME/.go
+#export GOROOT=/usr/local/opt/go/libexec
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+myconfig config --local status.showUntrackedFiles no
+
+
+
+alias tailf="tail -f"
+
+alias c="cd"
+alias c-="c -"
+
+
+
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export ISTIO=$GOPATH/src/istio.io
+[ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
+fi
+
+

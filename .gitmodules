@@ -1,6 +1,0 @@
-[submodule ".zplug"]
-	path = .zplug
-	url = /.zplug
-[submodule ".vim"]
-	path = .vim
-	url = git@github.com:avivl/dotvim.git

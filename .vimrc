@@ -1,1 +1,0 @@
-.ymir-vim/init.vim
