@@ -145,25 +145,18 @@ if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Use
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"   
 [ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PROMPT="$PROMPT\$(git-radar --zsh --fetch) "
+#OLD 
 if [ 1 -eq 0 ]; then
-
-# zplug
 
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:~/bin:~/google-cloud-sdk/bin
-
 export ANDROID_HOME=$HOME/android-sdks
 export ANDROID_SDK_ROOT=$HOME/android-sdks
 export NDK_ROOT=$ANDROID_HOME/android-ndk-r9
-
-
-
-
-
-
-#git-radar
 
 export PATH=$HOME/.git-extras:$PATH
 
@@ -176,20 +169,4 @@ export PATH=$HOME/.git-extras:$PATH
 alias myconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 myconfig config --local status.showUntrackedFiles no
 
-
-
-alias tailf="tail -f"
-
-alias c="cd"
-alias c-="c -"
-
-
-
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export ISTIO=$GOPATH/src/istio.io
-[ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
 fi
-
-
