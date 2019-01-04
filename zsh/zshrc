@@ -1,7 +1,7 @@
 # Source Plug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
-
+export PATH=$HOME/.bin:/usr/local/bin:$PATH
 #profiling
 #zmodload zsh/zprof
 
@@ -13,17 +13,17 @@ zplug "sorin-ionescu/prezto", \
   hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
 
 
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
 #zplugs
 
 #git stuff
-zplug "scmbreeze/scm_breeze", hook-build:"$ZPLUG_HOME/repos/scmbreeze/scm_breeze/install.sh"
+
 zplug "caarlos0/zsh-git-sync" # prune origin or upstream; merge upstream into current branch; push merged branch to fork (origin); remove merged branches.
 zplug "caarlos0/git-add-remote" #add-upstream company 
 zplug "tj/git-extras", use:"bin/*", as:command, hook-build:"make install PREFIX=$HOME/.git-extras"
 zplug "michaeldfallen/git-radar", use:git-radar, as:command
 zplug "paulirish/git-open", as:plugin
-
+zplug "scmbreeze/scm_breeze", hook-build:"$ZPLUG_HOME/repos/scmbreeze/scm_breeze/install.sh"
 #fzf
 zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
 zplug "junegunn/fzf-bin", from:gh-r, use:"*darwin*", rename-to:"fzf", as:command
@@ -38,7 +38,7 @@ zplug "djui/alias-tips"
 zplug "supercrabtree/k"
 zplug "b4b4r07/enhancd", use:init.sh, defer:3  # after prezto
 zplug "Tarrasch/zsh-bd", use:bd.zsh
-
+zplug "rupa/z", use:z.sh
 #colors
 #zplug "chriskempson/base16-shell", use:"scripts/base16-eighties.sh"
 
@@ -53,12 +53,14 @@ eval "$(pipenv --completion)"
 #go
 zplug 'syndbg/goenv', as:command, use:'bin/goenv'
 zplug 'syndbg/goenv', as:command, use:'plugins/go-build/bin/*'
-eval "$(goenv init -)"
+
 
 #ruby
 zplug "rbenv/rbenv", as:command, use:"bin/rbenv"
 eval "$(rbenv init -)"
 
+#k8s 
+zplug "nnao45/zsh-kubectl-completion"
 
 zplug load
 
@@ -114,14 +116,23 @@ autoload -Uz promptinit && promptinit
 source /usr/local/opt/kube-ps1/share/kube-ps1.sh
 #PROMPT='$(kube_ps1)'$PROMPT
 
+
+
+
 # python
-export PATH=$HOME/.local/bin:$PATH
+#export PATH=$HOME/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUALENVWRAPPER_PYTHON=$(which python2)
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 source $VIRTUALENVWRAPPER_SCRIPT
+#genv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+export PATH="$HOME/.goenv/shims:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
+eval "$(goenv init -)"
 
 HISTSIZE=20000
 HISTFILE=~/.zsh_history
@@ -144,16 +155,17 @@ if [ -f '/Users/aviv.laufer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Use
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"   
-[ -s "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh" ] && source "/Users/aviv.laufer/.scm_breeze/scm_breeze.sh"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PROMPT="$PROMPT\$(git-radar --zsh --fetch) "
+[ -s "$ZPLUG_HOME/repos/scmbreeze/scm_breeze/scm_breeze.sh" ] && source "$ZPLUG_HOME/repos/scmbreeze/scm_breeze/scm_breeze.sh"
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
 #OLD 
 if [ 1 -eq 0 ]; then
-
+#export PROMPT="$PROMPT\$(git-radar --zsh --fetch) "
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$ZPLUG_HOME/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:~/bin:~/google-cloud-sdk/bin
+#export PATH=$PATH:$HOME/bin
+export PATH=$PATH:~/google-cloud-sdk/bin
 export ANDROID_HOME=$HOME/android-sdks
 export ANDROID_SDK_ROOT=$HOME/android-sdks
 export NDK_ROOT=$ANDROID_HOME/android-ndk-r9

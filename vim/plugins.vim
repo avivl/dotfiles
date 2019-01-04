@@ -6,14 +6,14 @@ endfunction
 
 
 Plug 'tpope/vim-sensible'
-Plug  'scrooloose/nerdtree',{'on_cmd': 'NERDTreeToggle'}
-Plug  'altercation/vim-colors-solarized'
-Plug  'vim-airline/vim-airline'
-Plug  'vim-airline/vim-airline-themes'
-Plug  'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
-Plug  'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'scrooloose/nerdtree',{'on_cmd': 'NERDTreeToggle'}
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'vim-syntastic/syntastic'
-Plug  'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
@@ -31,12 +31,13 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tenfyzhong/CompleteParameter.vim'
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 
 "YcmCompleter
 
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -44,6 +45,18 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_python_binary_path = 'python'  " support virtualenv
 
+" Call YCM/Go/js GoTo depending on file type.
+function! GoToDef()
+    if &ft == 'go'
+        execute 'GoDef'
+    elseif &ft == 'javascript'
+        execute 'TernDef'
+    else
+        execute 'YcmCompleter GoTo'
+    endif
+endfunction
+nnoremap <leader>g :call GoToDef()<CR>
+map <leader>g :call GoToDef()<CR>
 
 " Syntastic 
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
@@ -127,6 +140,34 @@ noremap <silent> <Leader>uu :UndotreeToggle<CR>
 
 """ rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+			\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+			\	'ctermfgs': ['DarkGrey', 'darkblue', 'darkmagenta', 'darkcyan'],
+			\	'operators': '_,_',
+			\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+			\	'separately': {
+			\		'*': {},
+			\		'tex': {
+			\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+			\		},
+			\		'lisp': {
+			\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+			\		},
+			\		'vim': {
+			\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+			\		},
+			\		'html': {
+			\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+			\		},
+			\		'css': 0,
+			\	}
+			\}
+
+
+
+
+
+
 ""indent line
 "let g:indentLine_leadingSpaceChar='_'
 "let g:indentLine_leadingSpaceEnabled=1
@@ -141,3 +182,14 @@ smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 inoremap <buffer><silent> ) <C-R>=AutoPairsInsert(')')<CR>
+
+"tern_for_
+let g:tern#command = ['tern', '--no-port-file']
+let g:tern_show_signature_in_pum = 1
+let g:tern_show_argument_hints = 'on_move'
+
+"gitgutter
+let g:gitgutter_enabled=1
+
+"go
+let g:go_fmt_command = "goimports"

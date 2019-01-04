@@ -55,3 +55,7 @@ ehthumbs.db
 Thumbs.db
 package-lock.json
 .firebaserc
+
+
+vendor/*
+!vendor/vendor.json

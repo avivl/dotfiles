@@ -26,5 +26,8 @@ link:
 	@if [ ! . -ef ~/.docker ]; then ln -nfs "${pwd}/docker" ~/.docker; fi
 	#hg
 	@ln -nfs "${pwd}/hg/hgrc" ~/.hgrc
+	#bin
+	@if [ ! . -ef ~/.bin ]; then ln -nfs "${pwd}/bin" ~/.bin; fi
+	@chmod 744 "${pwd}/bin/"*
 
 

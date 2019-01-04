@@ -15,15 +15,17 @@ SPACESHIP_PROMPT_ORDER=(
   char
   dir
   git
+
   golang
   docker
   venv
-  pyenv
+ 
   aws
 )
 
 SPACESHIP_RPROMPT_ORDER=(
   kubecontext
+  pyenv
   jobs
 )
 SPACESHIP_TIME_SHOW=true
@@ -42,12 +44,12 @@ SPACESHIP_HOST_SHOW=always
 
 # DIR
 SPACESHIP_DIR_PREFIX='' # disable directory prefix, cause it's not the first section
-SPACESHIP_DIR_TRUNC='1' # show only last directory
+SPACESHIP_DIR_TRUNC='3' # show only last 3 directory
 
 # GIT
 # Disable git symbol
-SPACESHIP_GIT_SYMBOL="" # disable git prefix
-SPACESHIP_GIT_BRANCH_PREFIX="" # disable branch prefix too
+#SPACESHIP_GIT_SYMBOL="" # disable git prefix
+#SPACESHIP_GIT_BRANCH_PREFIX="" # disable branch prefix too
 # Wrap git in `git:(...)`
 SPACESHIP_GIT_PREFIX='git:('
 SPACESHIP_GIT_SUFFIX=") "
@@ -75,5 +77,4 @@ SPACESHIP_VENV_SUFFIX=") "
 SPACESHIP_PYENV_PREFIX="python:("
 SPACESHIP_PYENV_SUFFIX=") "
 #SPACESHIP_PYENV_SYMBOL=""
-
 
