@@ -12,4 +12,5 @@ if command -v nvim >/dev/null 2>&1; then
 	ln -sf "$DOTFILES/vim/vimrc.symlink" ~/.config/nvim/init.vim
 	nvim +'PlugInstall --sync' +qa
 	nvim +'PlugUpdate' +qa
+    nvim +'UpdateRemotePlugins' +qa
 fi
