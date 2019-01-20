@@ -1,0 +1,79 @@
+{
+    "editor.fontSize": 15,
+      "editor.rulers": [
+            80,
+            120
+    ],
+    "editor.tabSize": 4,
+    "editor.trimAutoWhitespace": true,
+    "editor.tabCompletion": "on",
+    "explorer.openEditors.visible": 0,
+    "window.restoreWindows": "none",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontSize": 14,
+    "files.autoSave": "onFocusChange",
+    "extensions.autoUpdate": true,
+    "editor.cursorBlinking": "phase",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "files.trimTrailingWhitespace": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "window.zoomLevel": 0,
+    "extensions.ignoreRecommendations": false,
+    "go.coverageDecorator": {
+      "type": "gutter"
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "/vendor": true
+    },
+
+    "workbench.colorTheme": "Better Solarized Dark",
+    "terminal.explorerKind": "external",
+    "workbench.iconTheme": "material-icon-theme",
+    "breadcrumbs.enabled": true,
+    "todo-tree.defaultHighlight": {
+        "foreground": "green",
+        "type": "none"
+    },
+    "todo-tree.customHighlight": {
+        "TODO": {},
+        "FIXME": {}
+    },
+    "sync.gist": "79f91444906a25c38e0eb134ddab63d3",
+    "python.jediEnabled": false,
+
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.fontAliasing": "auto",
+  "docker.showExplorer": false,
+  "workbench.editor.showIcons": true,
+  "explorer.confirmDragAndDrop": false,
+  "search.smartCase": true,
+  "editor.fontFamily": "FuraCode Nerd Font Mono Retina, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "files.associations": {
+    "*.tmpl": "gotemplate"
+  },
+  "go.testTimeout": "3m",
+  "telemetry.enableTelemetry": false,
+  "terraform.telemetry.enabled": false,
+  "telemetry.enableCrashReporter": false,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.formatTool": "goimports",
+  "search.useGlobalIgnoreFiles": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "search.showLineNumbers": true,
+  "go.autocompleteUnimportedPackages": true,
+  "editor.fontWeight": "600",
+  "terminal.integrated.cursorBlinking": true,
+  "go.coverOnSingleTest": true,
+  "terminal.integrated.cursorStyle": "line",
+  "workbench.colorCustomizations":{
+    "peekView.border": "#E50A69AB",
+    "peekViewTitle.background": "#002b36",
+    "peekViewResult.background": "#00212b",
+    "peekViewEditor.background": "#002b36",
+    "peekViewEditor.matchHighlightBackground": "#00212bAB"
+  }
+}

@@ -1,0 +1,11 @@
+# credits github.com/sorin-ionescu/prezto
+
+
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export CLOUDSDK_PYTHON=~/.pyenv/versions/2.7.14/bin/python
+
+
+
