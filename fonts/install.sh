@@ -4,4 +4,4 @@ cd fonts
 ./install.sh
 # clean-up a bit
 cd ..
-rm -rf fonts
+#rm -rf fonts
