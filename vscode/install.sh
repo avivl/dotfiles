@@ -16,6 +16,8 @@ if command -v code >/dev/null; then
 alefragnani.project-manager
 batisteo.vscode-django
 bigonesystems.django
+bierner.markdown-preview-github
+bierner.markdown-preview-github-styles
 budparr.language-hugo-vscode
 bungcip.better-toml
 caarlos0.language-prometheus
@@ -47,6 +49,7 @@ ms-python.python
 ms-vscode.cpptools
 ms-vscode.Go
 patbenatar.advanced-new-file
+peterjausovec.vscode-docker
 PKief.material-icon-theme
 platformio.platformio-ide
 pnp.polacode
