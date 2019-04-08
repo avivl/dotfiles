@@ -67,6 +67,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'https://gitlab.com/Lenovsky/nuake.git'
 call plug#end()
 
+" black python formater
+Plug 'ambv/black'
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -117,6 +120,9 @@ set re=1
 
 " do not hide markdown
 set conceallevel=0
+
+" black python on save
+autocmd BufWritePre *.py execute ':Black'
 
 " open help vertically
 command! -nargs=* -complete=help Help vertical belowright help <args>

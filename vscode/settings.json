@@ -76,4 +76,7 @@
     "peekViewEditor.background": "#002b36",
     "peekViewEditor.matchHighlightBackground": "#00212bAB"
   }
+  "python.formatting.blackPath": "/Users/aviv.laufer/.pyenv/shims/black",
+  "python.formatting.provider": "black"
+
 }

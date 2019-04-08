@@ -53,9 +53,11 @@ peterjausovec.vscode-docker
 PKief.material-icon-theme
 platformio.platformio-ide
 pnp.polacode
+profimedica.live-preview
 redhat.vscode-yaml
 rust-lang.rust
 shanoor.vscode-nginx
+tht13.html-preview-vscode
 timonwong.shellcheck
 tushortz.python-extended-snippets
 VisualStudioExptTeam.vscodeintellicode
