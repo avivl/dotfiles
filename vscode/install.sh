@@ -36,14 +36,18 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 ericadamski.carbon-now-sh
 erichbehrens.pull-request-monitor
+foxundermoon.shell-format
 frhtylcn.pythonsnippets
 ginfuru.ginfuru-better-solarized-dark-theme
+GoogleCloudTools.cloudcode
+Gruntfuggly.todo-tree
 heptio.jsonnet
 HookyQR.beautify
 ipedrazas.kubernetes-snippets
 magicstack.MagicPython
 mauve.terraform
 moozzyk.Arduino
+msjsdiag.debugger-for-chrome
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-vscode.cpptools
@@ -57,6 +61,8 @@ profimedica.live-preview
 redhat.vscode-yaml
 rust-lang.rust
 shanoor.vscode-nginx
+streetsidesoftware.code-spell-checker
+tabnine.tabnine-vscode
 tht13.html-preview-vscode
 timonwong.shellcheck
 tushortz.python-extended-snippets

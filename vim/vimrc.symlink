@@ -54,6 +54,8 @@ Plug 'vim-airline/vim-airline-themes'
 " safe buffer deletion
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
+"tab nine
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Delete buffers and close files in Vim without closing your windows or
 " messing up your layout
 Plug 'moll/vim-bbye'
@@ -64,7 +66,7 @@ Plug 'mbbill/undotree'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'https://gitlab.com/Lenovsky/nuake.git'
+Plug 'https://github.com/Lenovsky/nuake.git'
 call plug#end()
 
 " black python formater

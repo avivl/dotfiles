@@ -31,3 +31,5 @@ if [[ ! -d "$TMPDIR" ]]; then export TMPDIR="/tmp/$LOGNAME"; mkdir -p -m 700 "$T
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 source ~/.zpreztorc
+
+export PATH="$HOME/.cargo/bin:$PATH"
