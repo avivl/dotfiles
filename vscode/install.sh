@@ -52,6 +52,7 @@ ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-vscode.cpptools
 ms-vscode.Go
+ms-vscode-remote.vscode-remote-extensionpack
 patbenatar.advanced-new-file
 peterjausovec.vscode-docker
 PKief.material-icon-theme
