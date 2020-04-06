@@ -87,6 +87,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "djui/alias-tips"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3  # >=10 means after compinit
 zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
 
 #gcloud
 zplug "avivl/gcloud-project", use:init.sh

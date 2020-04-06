@@ -7,11 +7,11 @@ SPACESHIP_PROMPT_ORDER=(
   git
   golang
   venv
-  aws
+#  aws
 )
 
 SPACESHIP_RPROMPT_ORDER=(
-  kubecontext
+  #kubecontext
   #pyenv
 )
 SPACESHIP_TIME_SHOW=true
