@@ -296,6 +296,7 @@ fi
 echo "  › Disable Spotify web helper"
 disable_agent ~/Applications/Spotify.app/Contents/MacOS/SpotifyWebHelper
 
+defaults write com.apple.Finder AppleShowAllFiles true
 #############################
 
 echo ""

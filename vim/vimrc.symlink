@@ -1,8 +1,8 @@
 
 " deoplete
 "   nvim python
-let g:python_host_prog=expand('~/.pyenv/versions/neovim2/bin/python')
-let g:python3_host_prog=expand('~/.pyenv/versions/neovim3/bin/python')
+"let g:python_host_prog=expand('~/.pyenv/versions/neovim2/bin/python')
+let g:python3_host_prog=expand('/Users/avivl/.pyenv/versions/neovim/bin/python')
 
 " load plugins
 call plug#begin('~/.vim/plugged')
