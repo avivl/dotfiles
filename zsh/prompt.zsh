@@ -5,6 +5,7 @@ SPACESHIP_PROMPT_ORDER=(
   char
   dir
   git
+  node
   golang
   venv
 #  aws
@@ -64,4 +65,8 @@ SPACESHIP_PYENV_PREFIX="python:("
 SPACESHIP_PYENV_SUFFIX=") "
 #SPACESHIP_PYENV_SYMBOL=""
 
+# NODE
+SPACESHIP_NODE_SHOW=true
+SPACESHIP_NODE_PREFIX="node:("
+SPACESHIP_NODE_SUFFIX=") "
 
