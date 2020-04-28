@@ -5,6 +5,7 @@ SPACESHIP_PROMPT_ORDER=(
   char
   dir
   git
+  hg
   node
   golang
   venv
@@ -69,4 +70,6 @@ SPACESHIP_PYENV_SUFFIX=") "
 SPACESHIP_NODE_SHOW=true
 SPACESHIP_NODE_PREFIX="node:("
 SPACESHIP_NODE_SUFFIX=") "
+
+#Mercurial
 
